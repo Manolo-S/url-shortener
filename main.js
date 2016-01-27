@@ -66,7 +66,7 @@ function shortUrl(req, res){
 	var id = req.params.id;
     
 	shortUrlModel.find({urlNumber: id}, function(err, storedUrl){
-		if ((storedUrl[0]).urlNumber !== 0) {
+		if (storedUrl[0] !== undefined) {
 			var obj = storedUrl[0];
 			console.log(obj.originalUrl)
 			res.redirect(obj.originalUrl);
