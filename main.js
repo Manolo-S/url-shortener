@@ -7,7 +7,7 @@ var port = process.env.PORT || 3000;
 
 var mongoose = require('mongoose');
 
-var db = mongoose.connect('mongodb://localhost/urlshortener');
+// var db = mongoose.connect('mongodb://localhost/urlshortener');
 
 var Schema = mongoose.Schema;
 
