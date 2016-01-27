@@ -21,7 +21,6 @@ var shortUrlModel= mongoose.model('urlshort', shortUrlSchema);
 
 
 function checkURL(req, res){
-	var res = res;
 	var url = (req.originalUrl).slice(5);
 	var response;
 	console.log('url: ', url)
@@ -67,9 +66,10 @@ function shortUrl(req, res){
 	var id = req.params.id;
     
 	shortUrlModel.find({urlNumber: id}, function(err, storedUrl){
-		if ((storedUrl[0]).urlNumber === id){
-			console.log((storedUrl[0]).originalUrl)
-			res.redirect((storedUrl[0]).originalUrl);
+		if (Array.isArray(storedUrl)) {
+			var obj = storedUrl[0];
+			console.log(obj.originalUrl)
+			res.redirect(obj.originalUrl);
 		}
 		else {
 			console.log("url not found")
