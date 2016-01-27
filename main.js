@@ -68,7 +68,7 @@ function shortUrl(req, res){
     
 	shortUrlModel.find({urlNumber: id}, function(err, url){
 		if (url){
-			console.log(url.originalUrl)
+			console.log(url)
 			res.redirect(url.originalUrl);
 		}
 		else {
