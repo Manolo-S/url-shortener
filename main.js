@@ -28,14 +28,14 @@ function checkURL(req, res){
 	if (validUrl.isUri(url)){
 		shortUrlModel.find({originalUrl: url}, function(err,obj){
 			if (obj[0]){
-				response = JSON.stringify({"original_url": url, short_url: 'http://shorten-your-url.heroku.com/' + obj[0].urlNumber});   
+				response = JSON.stringify({"original_url": url, short_url: 'http://shorten-your-url.herokuapp.com/' + obj[0].urlNumber});   
 				res.setHeader('Content-Type', 'text/html');
 				res.send('<p>' + response + '</p>');
 			} else {	
 				console.log('url not found')	;
 				shortUrlModel.count({}, function (err, count) {
 					var newUrlCount = count + 1;
-					response = JSON.stringify({"original_url": url, short_url: 'http://shorten-your-url.heroku.com/' + newUrlCount});   
+					response = JSON.stringify({"original_url": url, short_url: 'http://shorten-your-url.herokuapp.com/' + newUrlCount});   
 					res.setHeader('Content-Type', 'text/html');
 					res.send('<p>' + response + '</p>');
 					storeShortUrl(url, newUrlCount);					
