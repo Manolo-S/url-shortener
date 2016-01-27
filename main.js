@@ -67,9 +67,9 @@ function shortUrl(req, res){
 	var id = req.params.id;
     
 	shortUrlModel.find({urlNumber: id}, function(err, url){
-		if (url[0]){
-			console.log(url[0].originalUrl)
-			res.redirect(url[0].originalUrl);
+		if (url){
+			console.log(url.originalUrl)
+			res.redirect(url.originalUrl);
 		}
 		else {
 			console.log("url not found")
