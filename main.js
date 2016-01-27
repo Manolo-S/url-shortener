@@ -72,7 +72,8 @@ function shortUrl(req, res){
 			res.redirect(obj.originalUrl);
 		}
 		else {
-			console.log("url not found")
+			res.setHeader('Content-Type', 'text/html');
+			res.send('<p>url not found</p>');
 		}
 	});
 }
@@ -83,7 +84,6 @@ app.get('/:id', shortUrl);
 
 app.listen(port);
 
-console.log('Server listening on localhost  port: ' + port + '/');
 
 
 
